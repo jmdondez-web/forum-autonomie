@@ -31,10 +31,10 @@ cd /opt/nodebb
 ./nodebb upgrade -mi   # installe dépendances npm sans démarrer
 
 # --- 4. Configuration initiale (interactive, une seule fois) ---
-# Répondre : URL = http://192.168.0.106:4567 ; host = 0.0.0.0 ; Redis默认 ;
+# Répondre : URL = http://192.168.0.106:4567 ; host = 0.0.0.0 ; Redis par défaut ;
 # admin : créer le compte administrateur (identifiant local, pas votre email réel).
 echo ""
 echo "=== Paquets et NodeBB installés. ==="
 echo "=== Lancez maintenant :  cd /opt/nodebb && ./nodebb setup  ==="
 echo "=== Réponses conseillées : URL http://192.168.0.106:4567, host 0.0.0.0, Redis par défaut. ==="
-echo "=== Puis : ./nodebb start  (ou systemctl, voir README). ==="
+echo "=== Puis : ./nodebb start  (ou systemd, voir README). ==="
