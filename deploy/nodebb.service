@@ -1,0 +1,15 @@
+[Unit]
+Description=NodeBB forum (LXC 106)
+After=network.target redis-server.service
+Wants=redis-server.service
+
+[Service]
+Type=forking
+PIDFile=/opt/nodebb/pidfile
+WorkingDirectory=/opt/nodebb
+ExecStart=/opt/nodebb/nodebb start
+ExecStop=/opt/nodebb/nodebb stop
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
