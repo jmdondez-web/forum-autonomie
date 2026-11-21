@@ -21,7 +21,7 @@ chown -R www-data:www-data /usr/share/FreshRSS
 for d in data extensions cache; do mkdir -p /usr/share/FreshRSS/$d; chown www-data:www-data /usr/share/FreshRSS/$d; done
 
 echo "== Nginx =="
-cat > /etc/nginx/sites-available/freshrss <<NGINX
+cat > /etc/nginx/sites-available/freshrss <<'NGINX'
 server {
     listen 80 default_server;
     server_name _;
@@ -34,7 +34,7 @@ server {
 
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/phpPHPV-fpm.sock;
+        fastcgi_pass unix:/run/php/PHPSOCK;
     }
 
     location ~ /\.(?!well-known) {
@@ -42,7 +42,7 @@ server {
     }
 }
 NGINX
-sed -i "s|phpPHPV-fpm.sock|php$PHPV-fpm.sock|" /etc/nginx/sites-available/freshrss
+sed -i "s|/run/php/PHPSOCK|/run/php/php$PHPV-fpm.sock|" /etc/nginx/sites-available/freshrss
 ln -sf /etc/nginx/sites-available/freshrss /etc/nginx/sites-enabled/freshrss
 rm -f /etc/nginx/sites-enabled/default
 nginx -t
